@@ -3,7 +3,6 @@ ruigi_target <- R6::R6Class("ruigi_target",
   public = list(
     ## Defaults
     name = "ruigi target",
-    requires = NULL,
     write = NULL,
     location = NULL,
     exists = NULL,
@@ -14,9 +13,6 @@ ruigi_target <- R6::R6Class("ruigi_target",
     initialize = function(name, requires, write, exists, location) {
       if (!missing(name)) self$name <- name
       if (missing(requires)) stop("A target requires an input that will be saved")
-      if (!(is.ruigi_node(requires) && length(requires) == 1))
-        stop("Invalid ", sQuote("requires"), " for a ruigi target")
-      self$requires <- requires
       ## A target must implement two methods: *exists* and *write*
       ## The scheduler will determine which nodes need to be computed depending on the
       ## target of every node. Namely, if `target$exists()`` is **TRUE**, then the
