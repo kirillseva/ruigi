@@ -2,7 +2,7 @@ Package: ruigi
 Type: Package
 Title: ruigi (http://github.com/kirillseva/ruigi)
 Description: Describe the package.
-Version: 0.1.0
+Version: 0.0.1.9000
 Author: Kirill Sevastyanenko <kirillseva@gmail.com>
 Maintainer: Kirill Sevastyanenko <kirillseva@gmail.com>
 Authors@R: c(person("Kirill", "Sevastyanenko",
