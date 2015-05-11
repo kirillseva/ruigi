@@ -14,7 +14,7 @@ ruigi_node <- R6::R6Class("ruigi_node",
       if (!missing(name)) self$name <- name
       if (!missing(requires)) {
         if (length(requires) > 0) {
-          if (!all(is.ruigi_target(unlist(requires))))
+          if (!all(sapply(requires, is.ruigi_target)))
             stop("Invalid ", sQuote("requires"), " for a ruigi node")
         }
         self$requires <- requires
@@ -32,8 +32,10 @@ ruigi_node <- R6::R6Class("ruigi_node",
         sQuote("target"), " as inputs")
       self$runner <- runner
       if (missing(target)) stop("Every node must have a ", sQuote("target"))
-      if (!is.ruigi_target(target) | length(target) != 1)
+      if (!is.ruigi_target(target) | length(target) != 6) {
+        browser()
         stop("A node must have one and only one target that is a ", sQuote("ruigi_target"))
+      }
       self$target <- target
     }
   )
