@@ -4,6 +4,7 @@ ruigi_target <- R6::R6Class("ruigi_target",
     ## Defaults
     name = "ruigi target",
     write = NULL,
+    read = NULL,
     location = NULL,
     exists = NULL,
     ## This initialize ensures that all the inputs are valid in a very verbose way
@@ -25,6 +26,11 @@ ruigi_target <- R6::R6Class("ruigi_target",
         stop(sQuote("exists"), " must be a function")
       if (!is.null(formals(exists))) stop(sQuote("exists"), " should not have any inputs")
       self$exists <- exists
+
+      if (!is.function(read) | length(read) != 1)
+        stop(sQuote("read"), " must be a function")
+      if (!is.null(formals(read))) stop(sQuote("read"), " should not have any inputs")
+      self$read <- read
 
       if (missing(write)) stop("Must implement ", sQuote("write"), " for a target.")
       if (!is.function(write) | length(write) != 1)

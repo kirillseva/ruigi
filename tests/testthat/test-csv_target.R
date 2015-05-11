@@ -7,5 +7,6 @@ test_that('Test write and exists', {
   expect_false(trgt$exists())
   trgt$write(tmp)
   expect_true(trgt$exists())
+  expect_equal(tmp, trgt$read())
   unlink(tmpfile)
 })
