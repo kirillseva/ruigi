@@ -1,5 +1,5 @@
 #' @export
-ruigi_node <- R6Class("ruigi_node",
+ruigi_node <- R6::R6Class("ruigi_node",
   public = list(
     ## Defaults
     name = "ruigi processing node",
@@ -15,7 +15,7 @@ ruigi_node <- R6Class("ruigi_node",
       if (!missing(requires)) {
         if (length(requires) > 0) {
           if (!all(is.ruigi_target(unlist(requires))))
-            stop("Invalid", sQuote("requires"), " for a ruigi node")
+            stop("Invalid ", sQuote("requires"), " for a ruigi node")
         }
         self$requires <- requires
       }
@@ -35,7 +35,7 @@ ruigi_node <- R6Class("ruigi_node",
       if (!is.ruigi_target(target) | length(target) != 1)
         stop("A node must have one and only one target that is a ", sQuote("ruigi_target"))
       self$target <- target
-    },
+    }
   )
 )
 

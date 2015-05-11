@@ -4,7 +4,7 @@ CSVtarget <- function(requires, location, name = paste0("Write to ", sQuote(".cs
     name = name,
     requires = requires,
     write = function(obj) write.csv(obj, self$location, row.names = FALSE),
-    exists = function() file.exists(location),
+    exists = function() file.exists(self$location),
     location = location
   )
   class(trgt) <- c("CSVtarget", class(trgt))

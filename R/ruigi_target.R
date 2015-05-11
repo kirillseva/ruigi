@@ -1,5 +1,5 @@
 #' @export
-ruigi_target <- R6Class("ruigi_target",
+ruigi_target <- R6::R6Class("ruigi_target",
   public = list(
     ## Defaults
     name = "ruigi target",
@@ -15,7 +15,7 @@ ruigi_target <- R6Class("ruigi_target",
       if (!missing(name)) self$name <- name
       if (missing(requires)) stop("A target requires an input that will be saved")
       if (!(is.ruigi_node(requires) && length(requires) == 1))
-        stop("Invalid", sQuote("requires"), " for a ruigi target")
+        stop("Invalid ", sQuote("requires"), " for a ruigi target")
       self$requires <- requires
       ## A target must implement two methods: *exists* and *write*
       ## The scheduler will determine which nodes need to be computed depending on the
@@ -38,7 +38,7 @@ ruigi_target <- R6Class("ruigi_target",
 
       if (missing(location)) stop("Please specify the location for the target")
       self$location <- location
-    },
+    }
   )
 )
 
