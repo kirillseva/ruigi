@@ -1,0 +1,41 @@
+ruigi_node <- R6Class("ruigi_node",
+  public = list(
+    ## Defaults
+    name = "ruigi processing node",
+    requires = list(),
+    processor = NULL,
+    target = NULL,
+    ## This initialize ensures that all the inputs are valid in a very verbose way
+    ## since this is the primary interface with the user.
+    ## It is important to check early because execution of the node may happen
+    ## on another machine, or it will start late and cause errors in a huge batch job.
+    initialize = function(name, requires, processor, target) {
+      if (!missing(name)) self$name <- name
+      if (!missing(requires)) {
+        if (length(requires) > 0) {
+          if (!all(is.ruigi_target(unlist(requires))))
+            stop("Invalid", sQuote("requires"), " for a ruigi node")
+        }
+        self$requires <- requires
+      }
+      ## A processor is the computation that the node must produce
+      ## In code, a processor is a function that has two arguments:
+      ## *requires*, that is a list of ruigi_nodes, and *produces*, which is a ruigi_target
+      ## In practise, this function will be called with the appropriate values by
+      ## the scheduler.
+      if (missing(processor)) stop("Every node must have a ", sQuote("processor"))
+      if (!is.function(processor) | length(processor) != 1)
+        stop("A ", sQuote("processor"), " must be a function")
+      if (! all(names(formals(processor)) %in% c("requires", "target")))
+        stop("A ", sQuote("processor"), " must take ", sQuote("requires"), "and ",
+        sQuote("target"), " as inputs")
+      self$processor <- processor
+      if (missing(target)) stop("Every node must have a ", sQuote("target"))
+      if (!is.ruigi_target(target) | length(target) != 1)
+        stop("A node must have one and only one target that is a ", sQuote("ruigi_target"))
+      self$target <- target
+    },
+  )
+)
+
+is.ruigi_node <- function(obj) inherits(obj, "ruigi_node")

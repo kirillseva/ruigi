@@ -1,6 +1,6 @@
 #' Describe the package.
 #'
 #' @name ruigi
-#' @import stringr
+#' @import stringr R6
 #' @docType package
 NULL
