@@ -1,3 +1,4 @@
+#' @export
 ruigi_node <- R6Class("ruigi_node",
   public = list(
     ## Defaults

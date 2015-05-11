@@ -1,15 +1,17 @@
+#' @export
 ruigi_target <- R6Class("ruigi_target",
   public = list(
     ## Defaults
     name = "ruigi target",
     requires = NULL,
     write = NULL,
+    location = NULL,
     exists = NULL,
     ## This initialize ensures that all the inputs are valid in a very verbose way
     ## since this is the primary interface with the user.
     ## It is important to check early because execution of the node may happen
     ## on another machine, or it will start late and cause errors in a huge batch job.
-    initialize = function(name, requires, write, exists) {
+    initialize = function(name, requires, write, exists, location) {
       if (!missing(name)) self$name <- name
       if (missing(requires)) stop("A target requires an input that will be saved")
       if (!(is.ruigi_node(requires) && length(requires) == 1))
@@ -33,6 +35,9 @@ ruigi_target <- R6Class("ruigi_target",
         stop(sQuote("write"), " must be a function")
       if (length(formals(write)) != 1) stop(sQuote("write"), " should have only one input")
       self$write <- write
+
+      if (missing(location)) stop("Please specify the location for the target")
+      self$location <- location
     },
   )
 )
