@@ -12,9 +12,11 @@ Depends:
 License: MIT
 LazyData: true
 Imports:
-    stringr
+    stringr,
+    R6
 Suggests:
     knitr,
+    s3mpi,
     microbenchmark,
     testthat
 Roxygen: list(wrap = FALSE)
