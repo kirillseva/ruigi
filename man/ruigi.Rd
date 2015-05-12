@@ -4,8 +4,8 @@
 \name{ruigi}
 \alias{ruigi}
 \alias{ruigi-package}
-\title{Describe the package.}
+\title{Your friendly neighborhood pipeline specialist.}
 \description{
-Describe the package.
+Your friendly neighborhood pipeline specialist.
 }
 
