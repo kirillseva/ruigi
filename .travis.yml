@@ -5,7 +5,7 @@ r_binary_packages:
  - digest
 r_github_packages:
  - avantcredit/aws-tools
- - kirillseva/covr
+ - jimhester/covr
  - robertzk/s3mpi
 after_success:
   - "R -e 'library(covr);coveralls()'"
