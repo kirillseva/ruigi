@@ -1,22 +1,21 @@
 ## [Who would have thought that data structures are useful](http://en.wikipedia.org/wiki/Topological_sorting)
 topological_sort <- function(graph) {
   stopifnot(is(graph, 'graph'))
-  sort_env <- new.env()
-  sort_env$sorted <- list(nodes = list(), edges = graph$edges)
-  sort_env$graph <- graph
+  sorted <- list(nodes = list(), edges = graph$edges)
+  graph <- graph
 
   g_visit <- function(idx) {
-    if (! is.null(sort_env$graph$nodes[[idx]]$mark)) {
-      if (sort_env$graph$nodes[[idx]]$mark == "temporary") stop("You have cyclic dependencies!")
+    if (! is.null(graph$nodes[[idx]]$mark)) {
+      if (graph$nodes[[idx]]$mark == "temporary") stop("You have cyclic dependencies!")
     }
-    if (is.null(sort_env$graph$nodes[[idx]]$mark)) {
-      sort_env$graph$nodes[[idx]]$mark <- "temporary"
+    if (is.null(graph$nodes[[idx]]$mark)) {
+      graph$nodes[[idx]]$mark <<- "temporary"
     }
     for (i in seq_along(graph$edges)) {
-      if (sort_env$graph$edges[[i]]$from == sort_env$graph$nodes[[idx]]$id) g_visit(i)
+      if (graph$edges[[i]]$from == graph$nodes[[idx]]$id) g_visit(i)
     }
-    sort_env$graph$nodes[[idx]]$mark <- "marked"
-    sort_env$sorted$nodes <- append(list(sort_env$graph$nodes[[idx]]), sort_env$sorted$nodes)
+    graph$nodes[[idx]]$mark <<- "marked"
+    sorted$nodes <<- append(list(graph$nodes[[idx]]), sorted$nodes)
   }
 
   repeat {
@@ -26,12 +25,12 @@ topological_sort <- function(graph) {
           if (nodes[[i]]$mark != "marked") return(i)
         } else return(i)
       }
-    })(sort_env$graph$nodes)
+    })(graph$nodes)
     ## no unmarked nodes left
     if (is.null(node_i)) break
     ## visit(node)
     g_visit(node_i)
   }
 
-  sort_env$sorted
+  sorted
 }
