@@ -9,11 +9,14 @@ topological_sort <- function(graph) {
       if (graph$nodes[[idx]]$mark == "temporary") stop("You have cyclic dependencies!")
       if (graph$nodes[[idx]]$mark == "marked") return()
     }
-    if (is.null(graph$nodes[[idx]]$mark)) {
-      graph$nodes[[idx]]$mark <<- "temporary"
-    }
+    graph$nodes[[idx]]$mark <<- "temporary"
     for (i in seq_along(graph$edges)) {
-      if (graph$edges[[i]]$from == graph$nodes[[idx]]$id) g_visit(i)
+      if (graph$edges[[i]]$from == graph$nodes[[idx]]$id) {
+        to <- graph$edges[[i]]$to
+        for (j in seq_along(graph$nodes)) {
+          if (graph$nodes[[j]]$id == to) g_visit(j)
+        }
+      }
     }
     graph$nodes[[idx]]$mark <<- "marked"
     sorted$nodes <<- append(list(graph$nodes[[idx]]), sorted$nodes)
@@ -33,5 +36,6 @@ topological_sort <- function(graph) {
     g_visit(node_i)
   }
 
+  class(sorted) <- c("graph", class(sorted))
   sorted
 }
