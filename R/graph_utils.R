@@ -7,6 +7,7 @@ topological_sort <- function(graph) {
   g_visit <- function(idx) {
     if (! is.null(graph$nodes[[idx]]$mark)) {
       if (graph$nodes[[idx]]$mark == "temporary") stop("You have cyclic dependencies!")
+      if (graph$nodes[[idx]]$mark == "marked") return()
     }
     if (is.null(graph$nodes[[idx]]$mark)) {
       graph$nodes[[idx]]$mark <<- "temporary"
