@@ -8,6 +8,7 @@ test_that('A small dependency graph', {
 
   node0 <- ruigi_node$new(
     requires = list(),
+    name = "node0",
     target = CSVtarget$new(tmp3),
     runner = function(requires, target) {
       target$write(data.frame(a = 1, d = 4))
@@ -16,6 +17,7 @@ test_that('A small dependency graph', {
 
   node1 <- ruigi_node$new(
     requires = list(CSVtarget$new(tmp1), CSVtarget$new(tmp3)),
+    name = "node1",
     target = CSVtarget$new(tmp2),
     runner = function(requires, target) {
       tmpvalue <- requires[[1]]$read()
@@ -25,6 +27,7 @@ test_that('A small dependency graph', {
 
   node2 <- ruigi_node$new(
     requires = list(CSVtarget$new(tmp3)),
+    name = "node2",
     target = CSVtarget$new(tmp2),
     runner = function(requires, target) {
       tmpvalue <- requires[[1]]$read()
@@ -32,10 +35,12 @@ test_that('A small dependency graph', {
     }
   )
 
-  g <- ruigi:::build_node_graph(list(node1, node0, node2))
+  g <- ruigi:::build_node_graph(list(node1, node0))
   expect_equal(length(g$edges), 2)
   expect_equal(length(g$nodes), 3)
   expect_is(g, "graph")
+
+  print(topological_sort(g))
 
   unlink(tmp1)
   unlink(tmp2)
