@@ -36,8 +36,8 @@ test_that('A small dependency graph', {
   )
 
   g <- ruigi:::build_node_graph(list(node1, node0))
-  expect_equal(length(g$edges), 2)
-  expect_equal(length(g$nodes), 3)
+  expect_equal(length(g$edges), 1)
+  expect_equal(length(g$nodes), 2)
   expect_is(g, "graph")
 
   print(topological_sort(g))

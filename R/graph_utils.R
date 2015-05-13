@@ -16,7 +16,7 @@ topological_sort <- function(graph) {
       if (sort_env$graph$edges[[i]]$from == sort_env$graph$nodes[[idx]]$id) g_visit(i)
     }
     sort_env$graph$nodes[[idx]]$mark <- "marked"
-    sort_env$sorted$nodes <- append(sort_env$sorted$nodes, list(sort_env$graph$nodes[[idx]]))
+    sort_env$sorted$nodes <- append(list(sort_env$graph$nodes[[idx]]), sort_env$sorted$nodes)
   }
 
   repeat {
