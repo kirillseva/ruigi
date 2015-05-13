@@ -1,5 +1,5 @@
 `S3target&initialize` <- function(location, name) {
-  if (missing(location)) stop("Need to specify the filename for ", sQuote("CSVtarget"))
+  if (missing(location)) stop("Need to specify the bucket for ", sQuote("S3target"))
   self$location <- location
   self$name <- if (!missing(name)) name else paste(self$name, location)
 
