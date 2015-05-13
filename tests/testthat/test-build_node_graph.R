@@ -35,6 +35,7 @@ test_that('A small dependency graph', {
   g <- ruigi:::build_node_graph(list(node1, node0, node2))
   expect_equal(length(g$edges), 2)
   expect_equal(length(g$nodes), 3)
+  expect_is(g, "graph")
 
   unlink(tmp1)
   unlink(tmp2)

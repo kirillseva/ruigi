@@ -37,4 +37,6 @@ build_node_graph <- function(nodes) {
   })
 
   graph <- list(nodes = nodes, edges = edges)
+  class(graph) <- c("graph", class(graph))
+  graph
 }
