@@ -39,7 +39,11 @@ test_that('A linear graph', {
   g <- ruigi:::build_node_graph(list(node1, node0, node2))
   expect_is(g, "graph")
 
-  print(topological_sort(g))
+  sorted <- topological_sort(g)
+  ordering <- c("node0", "node1", "node2")
+  expect_equal(ordering, sapply(sorted$nodes, function(node) {
+    node$node$name
+  }))
 
   unlink(tmp1)
   unlink(tmp2)

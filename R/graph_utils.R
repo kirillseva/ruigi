@@ -1,4 +1,7 @@
 ## [Who would have thought that data structures are useful](http://en.wikipedia.org/wiki/Topological_sorting)
+## Topological sorting is the key to proper orchestrating of the tasks.
+## It provides a linear order in which tasks should be executed, and also
+## is useful if we want to plot a dependency graph.
 topological_sort <- function(graph) {
   stopifnot(is(graph, 'graph'))
   sorted <- list(nodes = list(), edges = graph$edges)

@@ -40,8 +40,6 @@ test_that('A small dependency graph', {
   expect_equal(length(g$nodes), 2)
   expect_is(g, "graph")
 
-  print(topological_sort(g))
-
   unlink(tmp1)
   unlink(tmp2)
   unlink(tmp3)
