@@ -4,7 +4,7 @@
 \name{Rtarget}
 \alias{Rtarget}
 \title{R target specifies an object with a given name in .ruigi_env}
-\format{\preformatted{Class 'R6ClassGenerator' <environment: 0x7fc85d6e5c78> 
+\format{\preformatted{Class 'R6ClassGenerator' <environment: 0x7ffb5b07b9c0> 
  - attr(*, "name")= chr "CSVtarget_generator"
 }}
 \usage{

@@ -4,7 +4,7 @@
 \name{S3target}
 \alias{S3target}
 \title{S3 target specifies an object with a given path in your default s3mpi bucket}
-\format{\preformatted{Class 'R6ClassGenerator' <environment: 0x7fc85d4ad6d8> 
+\format{\preformatted{Class 'R6ClassGenerator' <environment: 0x7ffb5b1e1a38> 
  - attr(*, "name")= chr "S3target_generator"
 }}
 \usage{
