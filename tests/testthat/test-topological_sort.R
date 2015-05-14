@@ -36,7 +36,7 @@ test_that('A linear graph', {
     }
   )
 
-  g <- ruigi:::build_node_graph(list(task1, task0, task2))
+  g <- ruigi:::build_task_graph(list(task1, task0, task2))
   expect_is(g, "graph")
 
   sorted <- topological_sort(g)

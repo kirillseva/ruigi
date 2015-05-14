@@ -2,8 +2,11 @@
 
 export(CSVtarget)
 export(S3target)
+export(local_scheduler)
+export(ruigi_scheduler)
 export(ruigi_target)
 export(ruigi_task)
 import(R6)
+import(crayon)
 import(s3mpi)
 import(stringr)

@@ -16,7 +16,8 @@ LazyData: true
 Imports:
     stringr,
     s3mpi,
-    R6
+    R6,
+    crayon
 Suggests:
     knitr,
     microbenchmark,
