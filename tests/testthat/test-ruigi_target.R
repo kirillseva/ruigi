@@ -16,14 +16,14 @@ test_that('Test write, read and exists', {
     read = function() "test",
     exists = function() TRUE,
     write = function(...) TRUE
-  ), "Please specify the location for the target.")
+  ))
 
   expect_error(ruigi_target$new(
     name = "Test target",
     read = function() "test",
     exists = function() TRUE,
     location = "hello"
-  ), "Must implement ‘write’ for a target.")
+  ))
 
   expect_error(ruigi_target$new(
     name = "Test target",
@@ -31,7 +31,7 @@ test_that('Test write, read and exists', {
     exists = function() TRUE,
     write = function(a, b) TRUE,
     location = "hello"
-  ), "‘write’ should have only one input.")
+  ))
 
   expect_error(ruigi_target$new(
     name = "Test target",
@@ -39,7 +39,7 @@ test_that('Test write, read and exists', {
     exists = function(a) TRUE,
     write = function(obj) TRUE,
     location = "hello"
-  ), "‘exists’ should not have any inputs.")
+  ))
 
   expect_error(ruigi_target$new(
     name = "Test target",
@@ -47,5 +47,5 @@ test_that('Test write, read and exists', {
     exists = function() TRUE,
     write = function(obj) TRUE,
     location = "hello"
-  ), "‘read’ should not have any inputs.")
+  ))
 })

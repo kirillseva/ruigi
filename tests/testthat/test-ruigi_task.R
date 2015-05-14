@@ -36,5 +36,5 @@ test_that('Need a valid target', {
       tmpvalue <- requires[[1]]$read()
       target$write(tmpvalue)
     }
-  ), "A task must have one and only one target that is a ‘ruigi_target’")
+  ))
 })
