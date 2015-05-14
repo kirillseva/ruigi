@@ -31,20 +31,15 @@ test_that('Executes a trivial 1-node pipeline', {
 })
 
 
-test_that('It can handle more complex pipelines', {
-  #write three input data frames and their corresponding tasks
+test_that('Errors on cyclic dependencies', {
   tmp1 <- tempfile()
-  write.csv(data.frame(id = 1, b=2, c=3), tmp1, row.names = FALSE)
+  write.csv(data.frame(a=1, b=2, c=3), tmp1, row.names = FALSE)
   tmp2 <- tempfile()
-  write.csv(data.frame(id = c(1,2), a=c(1, NA), b=c(2,5), c=c(3, 5), tmp2, row.names = FALSE)
-  tmp3 <- tempfile()
-  write.csv(data.frame(id = 6, a=8, b=7, tmp3, row.names = FALSE)
-  tmp4 <- tempfile()
 
-  task1 <- ruigi_task$new(
-    requires = list(CSVtarget$new(tmp1), CSVtarget$new(tmp2)),
-    target = CSVtarget$new(tmp4),
-    name = "Merge tmp1 and tmp2",
+  task <- ruigi_task$new(
+    requires = list(CSVtarget$new(tmp1)),
+    target = CSVtarget$new(tmp2),
+    name = "Your ad could be here",
     runner = function(requires, target) {
       tmpvalue <- requires[[1]]$read()
       target$write(tmpvalue)

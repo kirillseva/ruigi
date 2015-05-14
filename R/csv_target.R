@@ -8,6 +8,8 @@
   self$read <- function() read.csv(self$location)
 }
 
+#' CSV target specifies an csv file stored on your local drive
+#'
 #' @export
 CSVtarget <- R6::R6Class("CSVtarget",
   inherit = ruigi_target,

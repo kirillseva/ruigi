@@ -8,6 +8,8 @@
   self$read <- function() s3mpi::s3read(self$location)
 }
 
+#' S3 target specifies an object with a given path in your default s3mpi bucket
+#'
 #' @export
 S3target <- R6::R6Class("S3target",
   inherit = ruigi_target,
