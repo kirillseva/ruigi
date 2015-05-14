@@ -27,3 +27,14 @@ test_that('A simple unit test for one node', {
   unlink(tmp1)
   unlink(tmp2)
 })
+
+test_that('Need a valid target', {
+  expect_error(ruigi_task$new(
+    requires = list(Rtarget$new("yay")),
+    target = c("Error"),
+    runner = function(requires, target) {
+      tmpvalue <- requires[[1]]$read()
+      target$write(tmpvalue)
+    }
+  ), "A task must have one and only one target that is a ‘ruigi_target’")
+})

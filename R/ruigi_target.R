@@ -1,6 +1,5 @@
-`ruigi_target&initialize` <- function(name, requires, write, exists, location) {
+`ruigi_target&initialize` <- function(name, write, read, exists, location) {
   if (!missing(name)) self$name <- name
-  if (missing(requires)) stop("A target requires an input that will be saved")
   ## A target must implement two methods: *exists* and *write*
   ## The scheduler will determine which nodes need to be computed depending on the
   ## target of every node. Namely, if `target$exists()`` is **TRUE**, then the
@@ -11,21 +10,21 @@
   if (missing(exists)) stop("Must implement ", sQuote("exists"), " for a target.")
   if (!is.function(exists) | length(exists) != 1)
     stop(sQuote("exists"), " must be a function")
-  if (!is.null(formals(exists))) stop(sQuote("exists"), " should not have any inputs")
+  if (!is.null(formals(exists))) stop(sQuote("exists"), " should not have any inputs.")
   self$exists <- exists
 
   if (!is.function(read) | length(read) != 1)
     stop(sQuote("read"), " must be a function")
-  if (!is.null(formals(read))) stop(sQuote("read"), " should not have any inputs")
+  if (!is.null(formals(read))) stop(sQuote("read"), " should not have any inputs.")
   self$read <- read
 
   if (missing(write)) stop("Must implement ", sQuote("write"), " for a target.")
   if (!is.function(write) | length(write) != 1)
     stop(sQuote("write"), " must be a function")
-  if (length(formals(write)) != 1) stop(sQuote("write"), " should have only one input")
+  if (length(formals(write)) != 1) stop(sQuote("write"), " should have only one input.")
   self$write <- write
 
-  if (missing(location)) stop("Please specify the location for the target")
+  if (missing(location)) stop("Please specify the location for the target.")
   self$location <- location
 }
 

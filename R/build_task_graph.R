@@ -8,8 +8,7 @@ build_task_graph <- function(tasks) {
   nodes <- lapply(tasks, function(task) {
     list(
       id = digest::digest(task),
-      task = task,
-      finished = task$target$exists()
+      task = task
     )
   })
 
