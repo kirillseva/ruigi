@@ -1,9 +1,9 @@
 sudo: required
 language: r
 r_binary_packages:
- - testthat
  - digest
 r_github_packages:
+ - hadley/testthat
  - avantcredit/aws-tools
  - kirillseva/covr
  - robertzk/s3mpi
