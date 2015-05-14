@@ -4,7 +4,7 @@ Title: Ruigi
 Description: Your friendly neighborhood pipeline specialist.
 URL: http://github.com/kirillseva/ruigi
 BugReports: http://github.com/kirillseva/ruigi/issues
-Version: 0.1.0
+Version: 0.1.1
 Author: Kirill Sevastyanenko <kirillseva@gmail.com>
 Maintainer: Kirill Sevastyanenko <kirillseva@gmail.com>
 Authors@R: c(person("Kirill", "Sevastyanenko",
