@@ -1,20 +1,21 @@
 sudo: required
 language: r
 r_binary_packages:
- - digest
+- digest
 r_github_packages:
- - hadley/testthat
- - avantcredit/aws-tools
- - kirillseva/covr
- - robertzk/s3mpi
+- hadley/testthat
+- avantcredit/aws-tools
+- kirillseva/covr
+- robertzk/s3mpi
 after_success:
-  - "R -e 'library(covr);coveralls()'"
+- R -e 'library(covr);coveralls()'
 notifications:
   hipchat:
     rooms:
-      secure: C/QSVCJr0J4eLU1IF+yFOc0Az5I2oZC/F61b1Gb3OHm2ZtLTTJY+tTD1xO0PMp+FRdDLkV9PpFWei3C+tPOMVQrzHgpB9YL3RCsHbghzH3C9O7eexQMEON1xh4cI+09F+N6CisIdeQYsUEaePZ2/sOGjo1tcBdwxSjKttGslZlw=
+      secure: OeEfJjB0zNh3y8uKJYXk00PwJeSJhKl+ZZZIsKYcUFN4HJSAhWmtzxre9U+/XDi19L6CakHDL4cZGMNyQT5NN78tadsjNkhfMp8ctF3G1waXotpHia+OGLADR/pfwW6d8MaXcrZWOGxnCNF9reCgjHZ/0oG3qWjLfSHLX4zsJuUxu1L3JD5GgYqJb6U8F354joK/VEIQIDG32JTcBHZbLkZ3L0s1YNdhQuTt5KNzoewlhF8G1TNUOR25Thuxdropt3Fby9q+d3LjCi2qLQNfpXxArvtLOiDTqEvkOvnlh/QDYYLsqogHeb2TDXyH6Xs4jvXSbUFr4+nI61ZisBPcKFA7uEFv14Vbv4g5DP+sXDK5wHfLHeSAJuOQB36btlImakgJvwdIYHsE13tcr0IrOBxH5A/7vlyDKQFC9lZ9QLWX5e9l1koozMWngnhWb+C2i7MmABVHy538gh5ISKObDCXiYgaFq3+Cfvv1k8Dc9Coz9KJ4E856G/YANv1lfW4ZfBnZeIQgKHWNu/V9FiqxjqRD4ZJMWezjs73TiMYPiJUR0RlywF5bBVIht0z2ZFqQdA0GPxAdVG8J33aOqbyug+y2sFeQQItesxJtuay+HnwHdiT6aZSr7qyA+I4bW0+ipYtvACIxR+Y7EzGm1crngz9tuPRBNtAajlOW0R6Hnnw=
     on_success: change
     on_failure: change
     template:
-      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message} (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
+    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}
+      (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
     format: html
