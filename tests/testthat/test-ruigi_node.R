@@ -1,11 +1,11 @@
-context('Unit tests for ruigi_node')
+context('Unit tests for ruigi_task')
 
 test_that('A simple unit test for one node', {
   tmp1 <- tempfile()
   write.csv(data.frame(a=1, b=2, c=3), tmp1, row.names = FALSE)
   tmp2 <- tempfile()
 
-  node1 <- ruigi_node$new(
+  node1 <- ruigi_task$new(
     requires = list(CSVtarget$new(tmp1)),
     target = CSVtarget$new(tmp2),
     runner = function(requires, target) {

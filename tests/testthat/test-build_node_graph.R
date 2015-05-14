@@ -6,7 +6,7 @@ test_that('A small dependency graph', {
   tmp2 <- tempfile()
   tmp3 <- tempfile()
 
-  node0 <- ruigi_node$new(
+  node0 <- ruigi_task$new(
     requires = list(),
     name = "node0",
     target = CSVtarget$new(tmp3),
@@ -15,7 +15,7 @@ test_that('A small dependency graph', {
     }
   )
 
-  node1 <- ruigi_node$new(
+  node1 <- ruigi_task$new(
     requires = list(CSVtarget$new(tmp1), CSVtarget$new(tmp3)),
     name = "node1",
     target = CSVtarget$new(tmp2),
@@ -25,7 +25,7 @@ test_that('A small dependency graph', {
     }
   )
 
-  node2 <- ruigi_node$new(
+  node2 <- ruigi_task$new(
     requires = list(CSVtarget$new(tmp3)),
     name = "node2",
     target = CSVtarget$new(tmp2),

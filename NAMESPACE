@@ -2,8 +2,8 @@
 
 export(CSVtarget)
 export(S3target)
-export(ruigi_node)
 export(ruigi_target)
+export(ruigi_task)
 import(R6)
 import(s3mpi)
 import(stringr)

@@ -7,7 +7,7 @@ test_that('A linear graph', {
   tmp3 <- tempfile()
   tmp4 <- tempfile()
 
-  node0 <- ruigi_node$new(
+  node0 <- ruigi_task$new(
     requires = list(CSVtarget$new(tmp1)),
     name = "node0",
     target = CSVtarget$new(tmp2),
@@ -16,7 +16,7 @@ test_that('A linear graph', {
     }
   )
 
-  node1 <- ruigi_node$new(
+  node1 <- ruigi_task$new(
     requires = list(CSVtarget$new(tmp2)),
     name = "node1",
     target = CSVtarget$new(tmp3),
@@ -26,7 +26,7 @@ test_that('A linear graph', {
     }
   )
 
-  node2 <- ruigi_node$new(
+  node2 <- ruigi_task$new(
     requires = list(CSVtarget$new(tmp3)),
     name = "node2",
     target = CSVtarget$new(tmp4),
