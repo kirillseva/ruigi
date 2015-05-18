@@ -28,6 +28,9 @@
   self$location <- location
 }
 
+#' A minimal deliverable in ruigi. A target is an interface to an object (file, RAM address,
+#' database table, s3 bucket, etc.), with \code{read} and \code{write} methods.
+#'
 #' @export
 ruigi_target <- R6::R6Class("ruigi_target",
   public = list(

@@ -56,9 +56,14 @@ test_that('It can handle more complex pipelines', {
   )
 
   cat("\n") # it's prettier this way
-  pipeline(list(task3, task2, task1))
+  # Run up until merger
+  pipeline(list(task3, task2, task1, task4), to = Rtarget$new("merger"))
+
+  expect_false(Rtarget$new("final")$exists())
+  expect_true(Rtarget$new("merger")$exists())
   expect_equal(dim(.ruigi_env$merger), c(3, 8))
   # we've cached something!
+  cat("\n")
   takes_less_than(.3)(pipeline(list(task4, task3, task2, task1)))
   expect_equal(.ruigi_env$final, c(1, 2, 6))
 
