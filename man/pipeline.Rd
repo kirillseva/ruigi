@@ -4,10 +4,12 @@
 \alias{pipeline}
 \title{Define the pipeline and watch it get executed}
 \usage{
-pipeline(tasks, remote = FALSE)
+pipeline(tasks, to, remote = FALSE)
 }
 \arguments{
-\item{tasks}{list. A list of ruigi_tasks}
+\item{tasks}{list. A list of ruigi_tasks.}
+
+\item{to}{ruigi_target. The scheduler will stop executing the graph once this target is created.}
 
 \item{remote}{logical. Choose between a local and remote scheduler.}
 }

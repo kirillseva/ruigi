@@ -26,6 +26,11 @@
   self$target <- target
 }
 
+#' Minimal unit of computation in Ruigi. A task is a bundle that contains dependencies,
+#' a target (every node should produce one and only one target), and a function that maps the
+#' dependencies to this target. Ruigi will organize and determine the right order of computation
+#' of multiple nodes formed together into one pipeline.
+#'
 #' @export
 ruigi_task <- R6::R6Class("ruigi_task",
   public = list(

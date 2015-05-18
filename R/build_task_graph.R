@@ -13,10 +13,6 @@ build_task_graph <- function(tasks) {
   })
 
   edges <- list()
-  target_id <- function(target) {
-    stopifnot(is.ruigi_target(target))
-    digest::digest(digest::digest(paste0(target$location, class(target))))
-  }
   ## `O(n^2 * k)`, n - number of nodes, k - maximum number of requirements...
   ## Pretty sure we can do better
   lapply(nodes, function(lst) {
@@ -24,7 +20,7 @@ build_task_graph <- function(tasks) {
       ## no edges that start and end in the same node
       if (identical(lst$id, other_lst$id)) return(NULL)
       lapply(other_lst$task$requires, function(target) {
-        if (target_id(target) == target_id(lst$task$target)) {
+        if (target_hash(target) == target_hash(lst$task$target)) {
           edges <<- append(edges, list(list(from = lst$id, to = other_lst$id)))
         }
       })
@@ -35,4 +31,9 @@ build_task_graph <- function(tasks) {
   graph <- list(nodes = nodes, edges = edges)
   class(graph) <- c("graph", class(graph))
   graph
+}
+
+target_hash <- function(target) {
+  stopifnot(is.ruigi_target(target))
+  digest::digest(digest::digest(paste0(target$location, class(target))))
 }
