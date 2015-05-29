@@ -1,4 +1,4 @@
-Ruigi [![Build Status](https://img.shields.io/travis/kirillseva/ruigi.svg)](https://travis-ci.org/kirillseva/ruigi) [![Coverage Status](https://img.shields.io/coveralls/kirillseva/ruigi.svg)](https://coveralls.io/r/kirillseva/ruigi) ![Release Tag](https://img.shields.io/github/tag/kirillseva/ruigi.svg)
+Ruigi [![Build Status](https://img.shields.io/travis/kirillseva/ruigi/master.svg)](https://travis-ci.org/kirillseva/ruigi) [![Coverage Status](https://img.shields.io/coveralls/kirillseva/ruigi.svg)](https://coveralls.io/r/kirillseva/ruigi) ![Release Tag](https://img.shields.io/github/tag/kirillseva/ruigi.svg)
 ===========
 
 Ruigi is a pipeline specialist, much like his python counterpart,
