@@ -1,6 +1,8 @@
 Ruigi [![Build Status](https://img.shields.io/travis/kirillseva/ruigi/master.svg)](https://travis-ci.org/kirillseva/ruigi) [![Coverage Status](https://img.shields.io/coveralls/kirillseva/ruigi.svg)](https://coveralls.io/r/kirillseva/ruigi) ![Release Tag](https://img.shields.io/github/tag/kirillseva/ruigi.svg)
 ===========
 
+![Ruigi himself](http://youchew.net/wiki/images/2/2b/Ruigi.jpg)
+
 Ruigi is a pipeline specialist, much like his python counterpart,
 [Luigi](https://github.com/spotify/luigi).
 
