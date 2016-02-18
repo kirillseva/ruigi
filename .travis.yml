@@ -1,5 +1,7 @@
-sudo: required
-language: r
+language: R
+warnings_are_errors: false
+cache: packages
+sudo: false
 r_binary_packages:
 - digest
 r_github_packages:
