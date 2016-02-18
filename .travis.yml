@@ -6,6 +6,7 @@ r_github_packages:
 - hadley/testthat
 - avantcredit/aws-tools
 - kirillseva/covr
+- kirillseva/cacher
 - robertzk/s3mpi
 after_success:
 - R -e 'library(covr);coveralls()'
