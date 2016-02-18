@@ -20,7 +20,7 @@
     sQuote("target"), " as inputs")
   self$runner <- runner
   if (missing(target)) stop("Every task must have a ", sQuote("target"))
-  if (!is.ruigi_target(target) | length(target) != 6) {
+  if (!is.ruigi_target(target)) {
     stop("A task must have one and only one target that is a ", sQuote("ruigi_target"))
   }
   self$target <- target
