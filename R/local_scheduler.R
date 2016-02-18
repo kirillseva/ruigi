@@ -27,9 +27,9 @@
       cat(crayon::cyan("Running task: "), node$task$name)
       node$task$runner(node$task$requires, node$task$target)
       if (node$task$target$exists()) {
-        cat(crayon::green(" ✓"), "\n")
+        cat(crayon::green(" \u2713"), "\n")
       } else {
-        cat(crayon::red(" ✗"), "\n")
+        cat(crayon::red(" \u2717"), "\n")
         stop(paste0("Something went wrong! This task has finished",
           " running, but the target doesn't exist!"))
       }
