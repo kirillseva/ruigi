@@ -11,7 +11,7 @@
 #' R target specifies an object with a given name in .ruigi_env
 #'
 #' @export
-Rtarget <- R6::R6Class("CSVtarget",
+Rtarget <- R6::R6Class("Rtarget",
   inherit = ruigi_target,
   public = list(
     name = paste0("Save an object in ", sQuote(".ruigi_env")),
