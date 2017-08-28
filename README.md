@@ -39,10 +39,14 @@ you can have your own library of data processing steps that you can combine into
 Example
 ----
 ```r
+# Prepare expample dataset called titanic.csv
+download.file("https://gist.githubusercontent.com/michhar/2dfd2de0d4f8727f873422c5d959fff5/raw/ff414a1bcfcba32481e4d4e8db578e55872a2ca1/titanic.csv",
+              destfile = "./titanic.csv")
+
 # These can be logically organized into folders and then `source`'d
 # prior to defining the pipeline.
 reader <- ruigi_task$new(
-  requires = list(CSVtarget$new("~/Desktop/titanic.csv")),
+  requires = list(CSVtarget$new("./titanic.csv")),
   target = Rtarget$new("titanic_data"),
   name = "I will read a .csv file and store it on .ruigi_env",
   runner = function(requires, target) {
@@ -53,7 +57,7 @@ reader <- ruigi_task$new(
 
 writer <- ruigi_task$new(
   requires = list(Rtarget$new("titanic_data")),
-  target = CSVtarget$new("~/Desktop/output.csv"),
+  target = CSVtarget$new("./output.csv"),
   name = "I will read a file from RAM and store it in a .csv",
   runner = function(requires, target) {
     out <- requires[[1]]$read()
