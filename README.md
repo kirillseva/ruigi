@@ -73,6 +73,17 @@ ruigi::pipeline(list(reader, writer))
 # Skipping:  I will read a file from RAM and store it in a .csv
 ```
 
+Installation
+----
+```r
+if (!require("devtools")) { install.packages("devtools") }
+devtools::install_github("avantcredit/AWS.tools")
+devtools::install_github("kirillseva/cacher")
+devtools::install_github("robertzk/s3mpi")
+devtools::install_github("kirillseva/ruigi")
+library(ruigi)
+```
+
 Inspiration
 ----
 1. [Luigi](https://github.com/spotify/luigi). A very powerful and
